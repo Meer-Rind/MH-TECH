@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap);@tailwind base;@tailwind components;@tailwind utilities;.btn-primary,.btn-secondary,.container,.section-padding{@apply bg-secondary hover:bg-secondary-dark text-white font-medium rounded-lg px-6 py-3 transition-all duration-300}#root,body,html{height:100%}#root,body{display:flex;flex-direction:column}#root{min-height:100vh}
+/*# sourceMappingURL=main.d3e01d18.css.map*/
