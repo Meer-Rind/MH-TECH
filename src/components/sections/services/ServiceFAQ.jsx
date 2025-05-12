@@ -9,7 +9,7 @@ const ServiceFAQ = ({ faqs }) => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -22,11 +22,11 @@ const ServiceFAQ = ({ faqs }) => {
           }}
           viewport={{ once: true, margin: "0px 0px -50px 0px" }}
         >
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4 font-heading">
               Frequently Asked <span className="text-primary">Questions</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-dark/60 max-w-2xl mx-auto font-sans">
               Find answers to common queries about our services
             </p>
           </div>
@@ -45,13 +45,13 @@ const ServiceFAQ = ({ faqs }) => {
                   damping: 10
                 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-light/50"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex justify-between items-center p-6 md:p-7 text-left focus:outline-none group"
                 >
-                  <h3 className="text-lg md:text-xl font-medium text-gray-800 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg md:text-xl font-medium text-dark group-hover:text-primary transition-colors duration-300 font-sans">
                     {faq.question}
                   </h3>
                   <motion.div
@@ -80,7 +80,7 @@ const ServiceFAQ = ({ faqs }) => {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 md:px-7 md:pb-7 text-gray-600 leading-relaxed">
+                      <div className="px-6 pb-6 md:px-7 md:pb-7 text-dark/80 leading-relaxed font-sans">
                         {faq.answer}
                       </div>
                     </motion.div>

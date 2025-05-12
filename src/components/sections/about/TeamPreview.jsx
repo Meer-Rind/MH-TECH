@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FaLinkedinIn, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const TeamPreview = () => {
   const teamMembers = [
@@ -10,8 +11,10 @@ const TeamPreview = () => {
       image: "/images/team/Rind.jpg",
       social: {
         linkedin: "https://www.linkedin.com/in/meer-rind/",
-        twitter: "#"
-      }
+        twitter: "#",
+        github: "#"
+      },
+      accentColor: "from-[#4F46E5] to-[#818CF8]"
     },
     {
       name: "Hamza Choudary",
@@ -19,8 +22,10 @@ const TeamPreview = () => {
       image: "/images/team/hamza.jpg",
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+        github: "#"
+      },
+      accentColor: "from-[#10B981] to-[#34D399]"
     },
     {
       name: "Mudasir Nawaz",
@@ -28,37 +33,55 @@ const TeamPreview = () => {
       image: "/images/team/Nawaz.jpg",
       social: {
         linkedin: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+        github: "#"
+      },
+      accentColor: "from-[#EC4899] to-[#F472B6]"
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section className="relative py-28 bg-[#F9FAFB] overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-[#4F46E5] blur-[100px]"></div>
+        <div className="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-[#EC4899] blur-[100px]"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ 
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            duration: 0.8
-          }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl font-bold text-dark mb-4">
-            Meet Our <span className="text-primary">Team</span>
-          </h2>
-          <motion.p 
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+          <motion.span 
+            className="inline-block text-[#EC4899] font-special tracking-widest mb-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            OUR LEADERSHIP
+          </motion.span>
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6 text-[#1F2937] font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Our talented team of professionals is dedicated to delivering exceptional results.
+            The <span className="text-[#4F46E5]">Minds</span> Behind MH TECH
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-[#6B7280] max-w-2xl mx-auto font-body"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Our talented team of innovators is dedicated to crafting exceptional digital experiences.
           </motion.p>
         </motion.div>
         
@@ -68,7 +91,7 @@ const TeamPreview = () => {
               key={index}
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -15 }}
               transition={{ 
                 type: "spring",
                 stiffness: 100,
@@ -79,40 +102,60 @@ const TeamPreview = () => {
               viewport={{ once: true, margin: "-50px" }}
               className="group relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col items-center text-center">
+              {/* Gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${member.accentColor} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md -z-10`}></div>
+              
+              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 h-full flex flex-col items-center text-center border border-[#E5E7EB] group-hover:border-transparent">
+                {/* Profile image with frame */}
                 <motion.div 
-                  className="w-52 h-52 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg relative group-hover:border-primary transition-all duration-300"
+                  className="w-56 h-56 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white shadow-lg relative"
                   whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img 
                     src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Image overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </motion.div>
                 
-                <h3 className="text-2xl font-bold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
+                {/* Member info */}
+                <h3 className="text-2xl font-bold text-[#1F2937] mb-2 group-hover:text-[#4F46E5] transition-colors duration-300 font-heading">
                   {member.name}
                 </h3>
-                <p className="text-gray-600 mb-4">{member.position}</p>
+                <p className="text-[#6B7280] mb-6 font-medium">{member.position}</p>
                 
+                {/* Social links */}
                 <motion.div 
-                  className="flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ y: 10 }}
-                  whileInView={{ y: 0 }}
+                  className="flex space-x-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.15 + 0.3 }}
+                  viewport={{ once: true }}
                 >
-                  <a href={member.social.linkedin} className="text-gray-500 hover:text-primary transition-colors duration-300">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                  </a>
-                  <a href={member.social.twitter} className="text-gray-500 hover:text-primary transition-colors duration-300">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-                    </svg>
-                  </a>
+                  <motion.a 
+                    href={member.social.linkedin} 
+                    className="w-10 h-10 rounded-full bg-[#F3F4F6] flex items-center justify-center text-[#6B7280] hover:text-white hover:bg-[#0A66C2] transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <FaLinkedinIn size={16} />
+                  </motion.a>
+                  <motion.a 
+                    href={member.social.twitter} 
+                    className="w-10 h-10 rounded-full bg-[#F3F4F6] flex items-center justify-center text-[#6B7280] hover:text-white hover:bg-[#1DA1F2] transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <FaTwitter size={16} />
+                  </motion.a>
+                  <motion.a 
+                    href={member.social.github} 
+                    className="w-10 h-10 rounded-full bg-[#F3F4F6] flex items-center justify-center text-[#6B7280] hover:text-white hover:bg-[#181717] transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <FaGithub size={16} />
+                  </motion.a>
                 </motion.div>
               </div>
             </motion.div>
@@ -128,11 +171,23 @@ const TeamPreview = () => {
         >
           <Link 
             to="/team" 
-            className="inline-block px-8 py-3 bg-primary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#EC4899] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:opacity-90 transition-all duration-300 group"
           >
-            View Full Team
+            <motion.span
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="font-special tracking-wide"
+            >
+              Meet The Entire Team
+            </motion.span>
+            <svg 
+              className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
           </Link>
         </motion.div>
       </div>

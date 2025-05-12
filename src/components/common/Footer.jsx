@@ -1,123 +1,166 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const services = [
-    { name: 'Web Development', path: '/web-development' },
-    { name: 'App Development', path: '/app-development' },
-    { name: 'E-Commerce Solutions', path: '/ecommerce' },
-    { name: 'UI/UX Design', path: '/graphics-design' },
-    { name: 'Branding', path: '/graphics-design' },
+    { name: 'Web Development', path: '/web-development', icon: 'fa-code' },
+    { name: 'App Development', path: '/app-development', icon: 'fa-mobile-screen' },
+    { name: 'E-Commerce Solutions', path: '/ecommerce', icon: 'fa-cart-shopping' },
+    { name: 'UI/UX Design', path: '/graphics-design', icon: 'fa-pen-ruler' },
+    { name: 'Branding', path: '/graphics-design', icon: 'fa-palette' },
   ];
 
   const company = [
-    { name: 'About Us', path: '/about' },
-    { name: 'Our Team', path: '/team' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Careers', path: '/careers' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'About Us', path: '/about', icon: 'fa-info-circle' },
+    { name: 'Our Team', path: '/team', icon: 'fa-users' },
+    { name: 'Projects', path: '/projects', icon: 'fa-briefcase' },
+    { name: 'Careers', path: '/careers', icon: 'fa-user-tie' },
+    { name: 'Contact Us', path: '/contact', icon: 'fa-envelope' },
   ];
 
   const ecommercePlatforms = [
-    { name: 'Walmart Account Management' },
-    { name: 'TikTok Shop Integration' },
-    { name: 'eBay Store Setup' },
-    { name: 'Amazon FBA Services' },
-    { name: 'Multi-channel Listing' },
+    { name: 'Walmart Account Management', icon: 'fa-walmart' },
+    { name: 'TikTok Shop Integration', icon: 'fa-tiktok' },
+    { name: 'eBay Store Setup', icon: 'fa-ebay' },
+    { name: 'Amazon FBA Services', icon: 'fa-amazon' },
+    { name: 'Multi-channel Listing', icon: 'fa-layer-group' },
   ];
 
+  const socialLinks = [
+    { icon: 'fa-brands fa-facebook-f', url: '#', color: 'hover:bg-[#1877F2]' },
+    { icon: 'fa-brands fa-twitter', url: '#', color: 'hover:bg-[#1DA1F2]' },
+    { icon: 'fa-brands fa-linkedin-in', url: '#', color: 'hover:bg-[#0077B5]' },
+    { icon: 'fa-brands fa-instagram', url: '#', color: 'hover:bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF]' },
+    { icon: 'fa-brands fa-youtube', url: '#', color: 'hover:bg-[#FF0000]' },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100
+      }
+    }
+  };
+
   return (
-    <footer className="bg-dark text-white">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-dark text-light pt-16 pb-8">
+      <div className="container mx-auto px-5">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {/* Company Info */}
-          <div className="space-y-5">
-            <h3 className="text-2xl font-bold tracking-tight">MH TECH</h3>
-            <p className="text-gray-300 leading-relaxed">
+          <motion.div className="space-y-6" variants={itemVariants}>
+            <Link to="/" className="inline-block">
+              <h3 className="text-3xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                MH TECH
+              </h3>
+            </Link>
+            <p className="text-light/70 leading-relaxed">
               Transforming ideas into digital reality with cutting-edge technology and creative solutions.
             </p>
-            <div className="flex space-x-5 pt-2">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <FaFacebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <FaTwitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <FaLinkedin size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <FaInstagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors duration-300 transform hover:-translate-y-1">
-                <FaYoutube size={20} />
-              </a>
+            <div className="flex space-x-3">
+              {socialLinks.map((social, index) => (
+                <motion.a 
+                  key={index}
+                  href={social.url} 
+                  className={`w-9 h-9 flex items-center justify-center bg-white/5 rounded-full text-light hover:text-white transition-all ${social.color}`}
+                  whileHover={{ y: -3 }}
+                >
+                  <i className={social.icon} />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-5 pb-2 border-b border-gray-700 w-max">Services</h4>
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/10">Services</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li key={index}>
+                <motion.li key={index} variants={itemVariants}>
                   <Link 
                     to={service.path} 
-                    className="text-gray-300 hover:text-primary transition-colors duration-200 flex items-start group"
+                    className="text-light/70 hover:text-primary transition-colors flex items-start group"
                   >
-                    <span className="w-1 h-1 mt-2.5 mr-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {service.name}
+                    <i className={`fas ${service.icon} text-xs mt-1.5 mr-3 text-primary`} />
+                    <span className="group-hover:translate-x-1 transition-transform">{service.name}</span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company */}
-          <div>
-            <h4 className="text-lg font-semibold mb-5 pb-2 border-b border-gray-700 w-max">Company</h4>
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/10">Company</h4>
             <ul className="space-y-3">
               {company.map((item, index) => (
-                <li key={index}>
+                <motion.li key={index} variants={itemVariants}>
                   <Link 
                     to={item.path} 
-                    className="text-gray-300 hover:text-primary transition-colors duration-200 flex items-start group"
+                    className="text-light/70 hover:text-primary transition-colors flex items-start group"
                   >
-                    <span className="w-1 h-1 mt-2.5 mr-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item.name}
+                    <i className={`fas ${item.icon} text-xs mt-1.5 mr-3 text-primary`} />
+                    <span className="group-hover:translate-x-1 transition-transform">{item.name}</span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* E-commerce */}
-          <div>
-            <h4 className="text-lg font-semibold mb-5 pb-2 border-b border-gray-700 w-max">E-commerce Specialties</h4>
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/10">E-commerce</h4>
             <ul className="space-y-3">
               {ecommercePlatforms.map((platform, index) => (
-                <li 
+                <motion.li 
                   key={index} 
-                  className="text-gray-300 hover:text-primary transition-colors duration-200 flex items-start group"
+                  variants={itemVariants}
+                  className="text-light/70 hover:text-primary transition-colors flex items-start group"
                 >
-                  <span className="w-1 h-1 mt-2.5 mr-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  {platform.name}
-                </li>
+                  <i className={`fab ${platform.icon} text-xs mt-1.5 mr-3 text-primary`} />
+                  <span className="group-hover:translate-x-1 transition-transform">{platform.name}</span>
+                </motion.li>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} MH TECH. All rights reserved. 
-            <span className="mx-2">|</span>
-            <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <span className="mx-2">|</span>
-            <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+        <motion.div 
+          className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-light/50 text-sm order-2 md:order-1 mt-4 md:mt-0">
+            &copy; {new Date().getFullYear()} MH TECH. All rights reserved.
           </p>
-        </div>
+          <div className="flex space-x-6 order-1 md:order-2">
+            <Link to="/privacy" className="text-light/70 hover:text-primary text-sm transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-light/70 hover:text-primary text-sm transition-colors">Terms of Service</Link>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

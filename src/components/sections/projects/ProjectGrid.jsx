@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectCard from '../../ui/ProjectCard';
+import { motion } from 'framer-motion';
 
 const ProjectGrid = ({ filter }) => {
   const projects = [
@@ -50,20 +51,26 @@ const ProjectGrid = ({ filter }) => {
       <div className="container mx-auto">
         {filteredProjects.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {filteredProjects.map((project) => (
-              <ProjectCard 
-                key={project.id} 
-                {...project}
-                className="transition-transform duration-300 hover:scale-[1.02]"
-              />
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ProjectCard 
+                  {...project}
+                  className="transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
+                />
+              </motion.div>
             ))}
           </div>
         ) : (
           <div className="text-center py-12">
-            <h3 className="text-xl font-medium text-gray-500">
+            <h3 className="text-xl font-medium text-dark/60 font-sans">
               No projects found in this category
             </h3>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-dark/40 font-sans">
               Try selecting a different filter
             </p>
           </div>

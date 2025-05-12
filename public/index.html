@@ -10,7 +10,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -18,29 +21,34 @@
 
     <title>React App</title>
 
-    <!-- Optional: Tailwind Customization -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4F46E5",
-              secondary: "#10B981",
-              dark: "#1F2937",
-              light: "#F9FAFB",
-              accent: "#F59E0B",
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Poppins', 'sans-serif'],
-            },
-          },
-        },
-      }
-    </script>
+   
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+     <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#6C63FF',
+          secondary: '#00BFA6',
+          dark: '#2D3748',
+          light: '#F8F9FA',
+          accent: '#FF6584',
+          success: '#10B981',
+          warning: '#F59E0B',
+          danger: '#EF4444',
+          info: '#3B82F6',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Clash Display', 'Poppins', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
   </body>
 </html>
