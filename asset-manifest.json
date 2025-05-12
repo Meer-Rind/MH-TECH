@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/MH-TECH/static/css/main.d3e01d18.css",
-    "main.js": "/MH-TECH/static/js/main.33e3f8e1.js",
+    "main.js": "/MH-TECH/static/js/main.ac2d9e2d.js",
     "index.html": "/MH-TECH/index.html",
     "main.d3e01d18.css.map": "/MH-TECH/static/css/main.d3e01d18.css.map",
-    "main.33e3f8e1.js.map": "/MH-TECH/static/js/main.33e3f8e1.js.map"
+    "main.ac2d9e2d.js.map": "/MH-TECH/static/js/main.ac2d9e2d.js.map"
   },
   "entrypoints": [
     "static/css/main.d3e01d18.css",
-    "static/js/main.33e3f8e1.js"
+    "static/js/main.ac2d9e2d.js"
   ]
 }
