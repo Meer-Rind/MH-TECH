@@ -34,7 +34,7 @@ const FeaturedProjects = () => {
   ];
 
   return (
-    <section className="relative py-28 bg-[#1F2937] overflow-hidden">
+    <section className="relative py-28 bg-[#F9FAFB] overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#4F46E5] blur-[100px]"></div>
@@ -60,7 +60,7 @@ const FeaturedProjects = () => {
           </motion.span>
           
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading"
+            className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-6 font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -70,7 +70,7 @@ const FeaturedProjects = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-[#9CA3AF] max-w-2xl mx-auto font-body"
+            className="text-xl text-[#6B7280] max-w-2xl mx-auto font-body"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -102,7 +102,7 @@ const FeaturedProjects = () => {
               
               <ProjectCard 
                 {...project}
-                className="group-hover:shadow-xl group-hover:border-transparent transition-all duration-500"
+                className="bg-white group-hover:shadow-xl group-hover:border-transparent transition-all duration-500 border border-[#E5E7EB]"
               />
             </motion.div>
           ))}
@@ -117,11 +117,11 @@ const FeaturedProjects = () => {
         >
           <motion.a
             href="/projects"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#EC4899] text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:opacity-90 transition-all duration-300 group"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#EC4899] text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:opacity-90 transition-all duration-300 group font-special tracking-wide"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="font-special tracking-wide">View All Projects</span>
+            View All Projects
             <svg 
               className="w-5 h-5 ml-3 group-hover:translate-x-2 transition-transform duration-300" 
               fill="none" 
